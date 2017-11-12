@@ -22,16 +22,11 @@ public class MainActivity extends AppCompatActivity {
 
     Button addFoodButton;
 
-    public int convertToDp(int desiredDp){
-        float scale = getResources().getDisplayMetrics().density;
-        int dp = (int) (desiredDp*scale + 0.5f);
-        return dp;
-    }
     public void addNew(){
         TextView test = new TextView(getApplicationContext());
         test.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
         test.setText("Tester");
-        int dp = convertToDp(20);
+        int dp = Formulas.convertToDp(20, getResources().getDisplayMetrics().density);
         test.setPadding(dp,dp,dp,dp);
         foodList.addView(test);
     }
