@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout
+    tools:context="android.csulb.edu.cecs453finalproject.ProfileActivity"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+   <EditText
+       android:id="@+id/name"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:hint="Enter name here"
+       android:inputType="textPersonName"
+       />
+    <RadioGroup
+        android:id="@+id/genderGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:checkedButton="@+id/maleRadioButton">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Male"
+            android:id="@+id/maleRadioButton"
+            />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/femaleRadioButton"
+            android:text="female"
+            />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/ageText"
+        android:layout_width="wrap_content"
+        android:hint="Age"
+        android:layout_marginTop="25dp"
+        android:inputType="number"
+        android:padding="10dp"
+        android:layout_marginLeft="40dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name"
+        android:layout_toRightOf="@+id/genderGroup"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:text="Height: "
+        android:textSize="22sp"
+        android:layout_below="@id/ageText"
+        android:id="@+id/heightText"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="ft. "
+        android:inputType="number"
+        android:layout_toRightOf="@+id/heightText"
+        android:id="@+id/feet"
+        android:layout_below="@+id/ageText"
+        android:padding="20dp"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="in. "
+        android:inputType="number"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/inches"
+        android:layout_toRightOf="@+id/feet"
+        android:layout_below="@+id/ageText"
+        android:padding="20dp"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/currentWeight"
+        android:hint="Current Weight (lb)"
+        android:layout_marginLeft="20dp"
+        android:inputType="number|numberDecimal"
+        android:layout_below="@+id/heightText"
+        android:padding="10dp"
+        />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/goalWeight"
+        android:layout_marginLeft="20dp"
+        android:hint="Goal Weight (lb)"
+        android:layout_below="@+id/heightText"
+        android:layout_toRightOf="@+id/currentWeight"
+        android:padding="10dp"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:id="@+id/saveChangesButton"
+        android:layout_height="wrap_content"
+        android:text="Save Changes"
+        android:layout_below="@+id/goalWeight"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        />
+
+
+</RelativeLayout>

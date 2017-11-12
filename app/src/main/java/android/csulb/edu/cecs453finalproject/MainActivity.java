@@ -1,5 +1,6 @@
 package android.csulb.edu.cecs453finalproject;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -107,7 +108,8 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.profile){
-            Toast.makeText(getApplicationContext(), "You clicked " + item.getTitle(), Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
