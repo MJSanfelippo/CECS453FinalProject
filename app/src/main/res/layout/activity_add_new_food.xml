@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="android.csulb.edu.cecs453finalproject.AddNewFoodActivity">
+
+    <TextView
+        android:id="@+id/requiredTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Required"
+        android:textSize="32sp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="18dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        />
+
+    <EditText
+        android:id="@+id/foodNameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Enter food name"
+        android:layout_below="@+id/requiredTextView"
+        android:layout_alignLeft="@+id/requiredTextView"
+        />
+
+    <EditText
+        android:id="@+id/enterCaloriesEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/foodNameEditText"
+        android:layout_below="@+id/foodNameEditText"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Enter calories" />
+
+    <TextView
+        android:id="@+id/optionalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/enterCaloriesEditText"
+        android:layout_below="@+id/enterCaloriesEditText"
+        android:layout_marginTop="55dp"
+        android:text="Optional"
+        android:textSize="32sp"/>
+
+    <EditText
+        android:id="@+id/enterCarbsEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Enter carbs"
+        android:layout_below="@+id/optionalTextView"
+        android:layout_alignParentRight="true"
+        android:layout_alignLeft="@+id/optionalTextView"
+        />
+
+    <EditText
+        android:id="@+id/enterFatsEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Enter fats"
+        android:layout_below="@+id/enterCarbsEditText"
+        android:layout_alignParentRight="true"
+        android:layout_alignLeft="@+id/enterCarbsEditText"
+        />
+
+    <EditText
+        android:id="@+id/enterProteinsEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/enterFatsEditText"
+        android:layout_below="@+id/enterFatsEditText"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Enter proteins" />
+
+    <Button
+        android:id="@+id/addButton"
+        android:layout_marginLeft="70dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="65dp"
+        android:text="Add"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cancelButton"
+        android:layout_toRightOf="@+id/addButton"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="65dp"
+        android:layout_marginLeft="70dp"
+        android:text="Cancel" />
+
+
+</RelativeLayout>

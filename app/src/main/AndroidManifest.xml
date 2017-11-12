@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".AddNewFoodActivity"></activity>
     </application>
 
 </manifest>

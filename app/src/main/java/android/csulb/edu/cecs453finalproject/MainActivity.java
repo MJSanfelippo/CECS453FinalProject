@@ -70,10 +70,16 @@ public class MainActivity extends AppCompatActivity {
         remainingCalories = (TextView) findViewById(R.id.remainingCalories);
 
         addFoodButton = (Button) findViewById(R.id.addFoodButton);
+        addFoodButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, AddNewFoodActivity.class);
+                startActivity(intent);
+            }
+        });
         addNew(new FoodItem("food1", 33, id));
         addNew(new FoodItem("food2", 5, id));
         addNew(new FoodItem("food3", 3, id));
-
 
     }
 
@@ -114,4 +120,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }
