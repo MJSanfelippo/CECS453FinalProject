@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="android.csulb.edu.cecs453finalproject.MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calories"
+        android:id="@+id/calories"
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/dailyCaloricIntake"
+        android:layout_below="@+id/calories"
+        >
+
+        <TextView
+            android:id="@+id/goalCalories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Goal: 1500"
+            android:padding="15dp"
+            android:layout_marginLeft="15dp"
+            />
+        <TextView
+            android:id="@+id/currentCalories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Current: 250"
+            android:padding="15dp"
+            />
+        <TextView
+            android:id="@+id/remainingCalories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remaining: 1250"
+            android:padding="15dp"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="Food eaten: "
+        android:id="@+id/foodEaten"
+        android:layout_below="@+id/dailyCaloricIntake"/>
+    <ScrollView
+        android:id="@+id/foodListEaten"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/foodEaten"
+        android:layout_above="@+id/addFoodButton"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true"
+        >
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               android:id="@+id/foodList">
+
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Generic food name here"
+                   android:padding="20dp"/>
+
+
+           </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/addFoodButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Add a food!"
+        android:onClick="addFood"
+        />
+
+
+</RelativeLayout>
