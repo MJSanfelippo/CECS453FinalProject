@@ -35,7 +35,6 @@ public class Formulas {
 
     public static int convertToCm(int feet, int inches){
         int totalInches = (feet*12) + inches;
-
         return (int) (totalInches * 2.54);
     }
 

@@ -16,9 +16,12 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     private int id;
+    private ArrayList<FoodItem>  foodItemList;
     private LinearLayout foodList;
     TextView viewClicked;
 
@@ -28,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button addFoodButton;
 
-    public void addNew(int id){
+    public void addNew(FoodItem foodItem){
         TextView test = new TextView(getApplicationContext());
         test.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
         test.setText("Tester" + id);
@@ -36,6 +39,12 @@ public class MainActivity extends AppCompatActivity {
         registerForContextMenu(test);
         int dp = Formulas.convertToDp(20, getResources().getDisplayMetrics().density);
         test.setPadding(dp,dp,dp,dp);
+        test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // use foodItem to do new intent to view info about the thing
+            }
+        });
         test.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
@@ -50,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        foodItemList = new ArrayList<>();
         id = 0;
         getSupportActionBar().setTitle("Health Buddy");
         foodList = (LinearLayout) findViewById(R.id.foodList);
@@ -69,9 +79,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo){
         super.onCreateContextMenu(menu, v, menuInfo);
-        menu.setHeaderTitle("options");
         viewClicked = (TextView) v;
-
         menu.add(0, 1, 0, "edit");
         menu.add(0, 2, 1, "delete");
 
