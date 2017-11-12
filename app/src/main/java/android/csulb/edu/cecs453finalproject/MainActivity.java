@@ -69,9 +69,9 @@ public class MainActivity extends AppCompatActivity {
         remainingCalories = (TextView) findViewById(R.id.remainingCalories);
 
         addFoodButton = (Button) findViewById(R.id.addFoodButton);
-        addNew(5);
-        addNew(6);
-        addNew(7);
+        addNew(new FoodItem("food1", 333, id));
+        addNew(new FoodItem("food2", 5, id));
+        addNew(new FoodItem("food3", 3, id));
 
 
     }
