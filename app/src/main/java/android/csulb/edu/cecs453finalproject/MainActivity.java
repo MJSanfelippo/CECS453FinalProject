@@ -56,7 +56,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 FoodItem foodItem = (FoodItem) view.getTag();
-                Toast.makeText(getApplicationContext(), foodItem.getName()+" " + foodItem.getCalories(), Toast.LENGTH_LONG).show();
+
+                Bundle b = new Bundle();
+                b.putString("name", foodItem.getName());
+                b.putInt("calories", foodItem.getCalories());
+                b.putInt("fats", foodItem.getFats());
+                b.putInt("proteins", foodItem.getProtein());
+                b.putInt("carbs", foodItem.getCarbs());
+
+                Intent intent = new Intent(MainActivity.this, DisplayFoodInfoActivity.class);
+                intent.putExtras(b);
+                startActivity(intent);
 
             }
         });
@@ -148,6 +158,16 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     @Override

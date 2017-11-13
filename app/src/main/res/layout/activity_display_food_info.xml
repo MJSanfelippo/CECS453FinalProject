@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="android.csulb.edu.cecs453finalproject.DisplayFoodInfoActivity">
+
+   <TextView
+       android:id="@+id/nameTextView"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="Name: "
+       android:padding="20dp"
+       android:textSize="20sp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:padding="20dp"
+        android:id="@+id/realNameTextView"
+        android:text="default name here"
+        android:layout_toRightOf="@+id/nameTextView"/>
+
+    <TextView
+        android:id="@+id/caloriesTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nameTextView"
+        android:text="Calories: "
+        android:padding="20dp"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:id="@+id/realCaloriesTextView"
+        android:padding="20dp"
+        android:text="default cals here"
+        android:layout_toRightOf="@+id/caloriesTextView"
+        android:layout_below="@+id/nameTextView"/>
+
+    <TextView
+        android:id="@+id/fatsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/caloriesTextView"
+        android:text="Fats: "
+        android:padding="20dp"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:id="@+id/realFatsTextView"
+        android:padding="20dp"
+        android:text="default fats here"
+        android:layout_toRightOf="@+id/fatsTextView"
+        android:layout_below="@+id/realCaloriesTextView"/>
+
+    <TextView
+        android:id="@+id/carbsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fatsTextView"
+        android:text="Carbs: "
+        android:padding="20dp"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:id="@+id/realCarbsTextView"
+        android:padding="20dp"
+        android:text="default carbs here"
+        android:layout_toRightOf="@+id/carbsTextView"
+        android:layout_below="@+id/realFatsTextView"/>
+    <TextView
+        android:id="@+id/proteinsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/carbsTextView"
+        android:text="Proteins: "
+        android:padding="20dp"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:id="@+id/realProteinsTextView"
+        android:padding="20dp"
+        android:text="default fats here"
+        android:layout_toRightOf="@+id/proteinsTextView"
+        android:layout_below="@+id/realCarbsTextView"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:id="@+id/backToMainPageButton"
+        android:layout_height="wrap_content"
+        android:text="Back to main page"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="50dp"
+        />
+
+
+</RelativeLayout>
