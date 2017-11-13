@@ -1,5 +1,6 @@
 package android.csulb.edu.cecs453finalproject;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -22,28 +23,41 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private int id;
-    private ArrayList<FoodItem>  foodItemList;
     private LinearLayout foodList;
     TextView viewClicked;
+
+    FoodItem foodItem;
 
     TextView goalCalories;
     TextView currentCalories;
     TextView remainingCalories;
+
+    private int goalCaloriesNumber;
+    private int currentCaloriesNumber;
+    private int remainingCaloriesNumber;
+
 
     Button addFoodButton;
 
     public void addNew(FoodItem foodItem){
         TextView test = new TextView(getApplicationContext());
         test.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-        test.setText("Tester" + id);
+        test.setText(foodItem.getName());
+        test.setTag(foodItem);
         test.setId(id++);
+        currentCaloriesNumber+=foodItem.getCalories();
+        remainingCaloriesNumber-=foodItem.getCalories();
+        currentCalories.setText("Current: " + currentCaloriesNumber);
+        remainingCalories.setText("Remaining: " + remainingCaloriesNumber);
         registerForContextMenu(test);
         int dp = Formulas.convertToDp(20, getResources().getDisplayMetrics().density);
         test.setPadding(dp,dp,dp,dp);
         test.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // use foodItem to do new intent to view info about the thing
+                FoodItem foodItem = (FoodItem) view.getTag();
+                Toast.makeText(getApplicationContext(), foodItem.getName()+" " + foodItem.getCalories(), Toast.LENGTH_LONG).show();
+
             }
         });
         test.setOnLongClickListener(new View.OnLongClickListener() {
@@ -60,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        foodItemList = new ArrayList<>();
         id = 0;
         getSupportActionBar().setTitle("Health Buddy");
         foodList = (LinearLayout) findViewById(R.id.foodList);
@@ -70,11 +83,20 @@ public class MainActivity extends AppCompatActivity {
         remainingCalories = (TextView) findViewById(R.id.remainingCalories);
 
         addFoodButton = (Button) findViewById(R.id.addFoodButton);
+
+        goalCaloriesNumber = 1500;
+        currentCaloriesNumber = 0;
+        remainingCaloriesNumber = 1500;
+
+        goalCalories.setText("Goal: " + goalCaloriesNumber);
+        currentCalories.setText("Current: " + currentCaloriesNumber);
+        remainingCalories.setText("Remaining: " + remainingCaloriesNumber);
+
         addFoodButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, AddNewFoodActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, 69);
             }
         });
         addNew(new FoodItem("food1", 33, id));
@@ -95,8 +117,15 @@ public class MainActivity extends AppCompatActivity {
     public boolean onContextItemSelected(MenuItem item){
 
         if (item.getTitle().toString().equals("delete")){
-            Toast.makeText(getApplicationContext(), "this is: " + viewClicked.getText().toString(), Toast.LENGTH_SHORT).show();
             foodList.removeView(viewClicked);
+
+            FoodItem foodItem = (FoodItem) viewClicked.getTag();
+
+            currentCaloriesNumber-=foodItem.getCalories();
+            remainingCaloriesNumber+=foodItem.getCalories();
+            currentCalories.setText("Current: " + currentCaloriesNumber);
+            remainingCalories.setText("Remaining: " + remainingCaloriesNumber);
+
         } else {
             Toast.makeText(getApplicationContext(), "this is: " + item.getTitle(), Toast.LENGTH_SHORT).show();
         }
@@ -121,5 +150,32 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+
+        if (requestCode == 69) {
+            if(resultCode == Activity.RESULT_OK){
+                Bundle data = intent.getExtras();
+                String name = data.getString("name");
+                int calories = data.getInt("calories");
+                int carbs = 0;
+                int fats = 0;
+                int proteins = 0;
+                if (data.containsKey("carbs")){
+                    carbs = data.getInt("carbs");
+                }
+                if (data.containsKey("fats")){
+                    fats = data.getInt("fats");
+                }
+                if (data.containsKey("proteins")){
+                    proteins = data.getInt("proteins");
+                }
+                addNew(new FoodItem(name, calories, carbs, fats, proteins, id));
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                //Write your code if there's no result
+            }
+        }
+    }
 
 }

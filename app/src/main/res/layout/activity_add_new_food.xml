@@ -24,8 +24,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:text=""
         android:inputType="textPersonName"
-        android:text="Enter food name"
+        android:hint="Enter food name"
         android:layout_below="@+id/requiredTextView"
         android:layout_alignLeft="@+id/requiredTextView"
         />
@@ -34,11 +35,12 @@
         android:id="@+id/enterCaloriesEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text=""
         android:layout_alignLeft="@+id/foodNameEditText"
         android:layout_below="@+id/foodNameEditText"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Enter calories" />
+        android:inputType="number"
+        android:hint="Enter calories" />
 
     <TextView
         android:id="@+id/optionalTextView"
@@ -54,9 +56,10 @@
         android:id="@+id/enterCarbsEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text=""
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Enter carbs"
+        android:inputType="number"
+        android:hint="Enter carbs"
         android:layout_below="@+id/optionalTextView"
         android:layout_alignParentRight="true"
         android:layout_alignLeft="@+id/optionalTextView"
@@ -64,11 +67,12 @@
 
     <EditText
         android:id="@+id/enterFatsEditText"
+        android:text=""
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Enter fats"
+        android:inputType="number"
+        android:hint="Enter fats"
         android:layout_below="@+id/enterCarbsEditText"
         android:layout_alignParentRight="true"
         android:layout_alignLeft="@+id/enterCarbsEditText"
@@ -78,11 +82,12 @@
         android:id="@+id/enterProteinsEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text=""
         android:layout_alignLeft="@+id/enterFatsEditText"
         android:layout_below="@+id/enterFatsEditText"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Enter proteins" />
+        android:inputType="number"
+        android:hint="Enter proteins" />
 
     <Button
         android:id="@+id/addButton"
