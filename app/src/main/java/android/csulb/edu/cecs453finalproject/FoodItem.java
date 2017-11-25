@@ -1,5 +1,8 @@
 package android.csulb.edu.cecs453finalproject;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 /**
  * Created by Michael on 11/11/2017.
  */
@@ -7,23 +10,26 @@ package android.csulb.edu.cecs453finalproject;
 public class FoodItem {
 
     private String name;
-    private int calories;
-    private int protein;
-    private int carbs;
-    private int fats;
+    private double calories;
+    private double protein;
+    private double carbs;
+    private double fats;
+    private String date;
 
-    public FoodItem(String name, int calories){
+    public FoodItem(String name, double calories, String date){
         this.name = name;
         this.calories = calories;
         protein = carbs = fats = 0;
+        this.date = date;
     }
 
-    public FoodItem(String name, int calories, int protein, int carbs, int fats) {
+    public FoodItem(String name, double calories, double protein, double carbs, double fats, String date) {
         this.name = name;
         this.calories = calories;
         this.protein = protein;
         this.carbs = carbs;
         this.fats = fats;
+        this.date = date;
     }
 
     public String getName() {
@@ -34,7 +40,7 @@ public class FoodItem {
         this.name = name;
     }
 
-    public int getCalories() {
+    public double getCalories() {
         return calories;
     }
 
@@ -42,7 +48,7 @@ public class FoodItem {
         this.calories = calories;
     }
 
-    public int getProtein() {
+    public double getProtein() {
         return protein;
     }
 
@@ -50,7 +56,7 @@ public class FoodItem {
         this.protein = protein;
     }
 
-    public int getCarbs() {
+    public double getCarbs() {
         return carbs;
     }
 
@@ -58,11 +64,15 @@ public class FoodItem {
         this.carbs = carbs;
     }
 
-    public int getFats() {
+    public double getFats() {
         return fats;
     }
 
     public void setFats(int fats) {
         this.fats = fats;
     }
+
+    public String getDate() { return date; }
+
+    public void setDate(String date){ this.date = date; }
 }
