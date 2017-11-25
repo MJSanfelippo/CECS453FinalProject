@@ -106,8 +106,9 @@ public class MainActivity extends AppCompatActivity {
         addFoodButton = (Button) findViewById(R.id.addFoodButton);
 
         SharedPreferences settings = getApplicationContext().getSharedPreferences("userSettings", 0);
-        double weight = settings.getFloat("currentWeight", 150);
-        weight = Formulas.convertLbToKg(weight);
+        double currentWeight = settings.getFloat("currentWeight", 150);
+        double goalWeight = settings.getFloat("goalWeight", Float.parseFloat(Double.toString(currentWeight)));
+        double currentWeightInKg = Formulas.convertLbToKg(currentWeight);
         int feet = settings.getInt("feet", 5);
         int inches = settings.getInt("inches", 6);
         int height = Formulas.convertToCm(feet, inches);
@@ -118,7 +119,12 @@ public class MainActivity extends AppCompatActivity {
         } else {
             isMale = false;
         }
-        goalCaloriesNumber = Formulas.harrisBenedictEquation(weight, height, age, isMale)-400; // double, int, int, bool
+        goalCaloriesNumber = Formulas.harrisBenedictEquation(currentWeightInKg, height, age, isMale); // double, int, int, bool
+        if (currentWeight > goalWeight){
+            goalCaloriesNumber -= 400;
+        } else if (currentWeight < goalWeight){
+            goalCaloriesNumber += 400;
+        }
         currentCaloriesNumber = 0;
         remainingCaloriesNumber = goalCaloriesNumber-currentCaloriesNumber;
 

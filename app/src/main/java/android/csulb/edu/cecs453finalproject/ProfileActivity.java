@@ -93,22 +93,6 @@ public class ProfileActivity extends AppCompatActivity{
         maleRadioButton = (RadioButton) findViewById(R.id.maleRadioButton);
         femaleRadioButton = (RadioButton) findViewById(R.id.femaleRadioButton);
 
-        SharedPreferences settings = getApplicationContext().getSharedPreferences("userSettings", 0);
-        nameEditText.setText(settings.getString("name", ""));
-        ageEditText.setText(Integer.toString(settings.getInt("age", 0)));
-        feetEditText.setText(Integer.toString(settings.getInt("feet", 0)));
-        inchesEditText.setText(Integer.toString(settings.getInt("inches", 0)));
-        currentWeightEditText.setText(Float.toString(settings.getFloat("currentWeight", Float.parseFloat(Double.toString(0.0)))));
-        goalWeightEditText.setText(Float.toString(settings.getFloat("goalWeight", Float.parseFloat(Double.toString(0.0)))));
-        if (settings.getString("gender", null).equals("male")){
-            genderRadioGroup.check(maleRadioButton.getId());
-        } else if (settings.getString("gender", null).equals("female")){
-            genderRadioGroup.check(femaleRadioButton.getId());
-        } else {
-            genderRadioGroup.check(maleRadioButton.getId());
-        }
-
-
 
 
     }

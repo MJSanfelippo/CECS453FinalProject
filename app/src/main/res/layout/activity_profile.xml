@@ -96,6 +96,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:inputType="number|numberDecimal"
         android:maxWidth="200dp"
         android:id="@+id/goalWeight"
         android:layout_marginLeft="20dp"
