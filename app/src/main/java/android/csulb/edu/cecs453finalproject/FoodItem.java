@@ -9,6 +9,7 @@ import java.util.Calendar;
 
 public class FoodItem {
 
+    private int id;
     private String name;
     private double calories;
     private double protein;
@@ -16,11 +17,22 @@ public class FoodItem {
     private double fats;
     private String date;
 
-    public FoodItem(String name, double calories, String date){
+    public FoodItem(String name, double calories, String date, int id){
         this.name = name;
         this.calories = calories;
         protein = carbs = fats = 0;
         this.date = date;
+        this.id = id;
+    }
+
+    public FoodItem(String name, double calories, double protein, double carbs, double fats, String date, int id) {
+        this.name = name;
+        this.calories = calories;
+        this.protein = protein;
+        this.carbs = carbs;
+        this.fats = fats;
+        this.date = date;
+        this.id = id;
     }
 
     public FoodItem(String name, double calories, double protein, double carbs, double fats, String date) {
@@ -75,4 +87,8 @@ public class FoodItem {
     public String getDate() { return date; }
 
     public void setDate(String date){ this.date = date; }
+
+    public int getId(){ return id; }
+
+    public void setId(int id){ this.id = id; }
 }

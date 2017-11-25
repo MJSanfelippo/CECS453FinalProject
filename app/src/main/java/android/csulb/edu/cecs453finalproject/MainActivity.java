@@ -1,24 +1,25 @@
 package android.csulb.edu.cecs453finalproject;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.ActionBar;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.content.SharedPreferences.Editor;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private int goalCaloriesNumber;
     private int currentCaloriesNumber;
     private int remainingCaloriesNumber;
+
+    private String date;
 
 
     Button addFoodButton;
@@ -57,10 +60,10 @@ public class MainActivity extends AppCompatActivity {
 
                 Bundle b = new Bundle();
                 b.putString("name", foodItem.getName());
-                b.putInt("calories", foodItem.getCalories());
-                b.putInt("fats", foodItem.getFats());
-                b.putInt("proteins", foodItem.getProtein());
-                b.putInt("carbs", foodItem.getCarbs());
+                b.putDouble("calories", foodItem.getCalories());
+                b.putDouble("fats", foodItem.getFats());
+                b.putDouble("proteins", foodItem.getProtein());
+                b.putDouble("carbs", foodItem.getCarbs());
 
                 Intent intent = new Intent(MainActivity.this, DisplayFoodInfoActivity.class);
                 intent.putExtras(b);
@@ -78,11 +81,22 @@ public class MainActivity extends AppCompatActivity {
         foodList.addView(test);
     }
 
+    public void addAll(String date){
+        FoodDB db = new FoodDB(getApplicationContext());
+        Log.d("test", "do i get here");
+        ArrayList<FoodItem> itemList = db.getAllFoodsFromDate(date);
+        for (FoodItem item: itemList){
+            addNew(item);
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().setTitle("Health Buddy");
+
+        date = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
+
         foodList = (LinearLayout) findViewById(R.id.foodList);
 
         goalCalories = (TextView) findViewById(R.id.goalCalories);
@@ -91,9 +105,22 @@ public class MainActivity extends AppCompatActivity {
 
         addFoodButton = (Button) findViewById(R.id.addFoodButton);
 
-        goalCaloriesNumber = 1500;
+        SharedPreferences settings = getApplicationContext().getSharedPreferences("userSettings", 0);
+        double weight = settings.getFloat("currentWeight", 150);
+        weight = Formulas.convertLbToKg(weight);
+        int feet = settings.getInt("feet", 5);
+        int inches = settings.getInt("inches", 6);
+        int height = Formulas.convertToCm(feet, inches);
+        int age = settings.getInt("age", 25);
+        boolean isMale;
+        if (settings.getString("gender", "male").equals("male")){
+            isMale = true;
+        } else {
+            isMale = false;
+        }
+        goalCaloriesNumber = Formulas.harrisBenedictEquation(weight, height, age, isMale)-400; // double, int, int, bool
         currentCaloriesNumber = 0;
-        remainingCaloriesNumber = 1500;
+        remainingCaloriesNumber = goalCaloriesNumber-currentCaloriesNumber;
 
         goalCalories.setText("Goal: " + goalCaloriesNumber);
         currentCalories.setText("Current: " + currentCaloriesNumber);
@@ -103,12 +130,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, AddNewFoodActivity.class);
-                startActivityForResult(intent, 69);
+                intent.putExtra("date", date);
+                startActivity(intent);
             }
         });
-        addNew(new FoodItem("food1", 33));
-        addNew(new FoodItem("food2", 5));
-        addNew(new FoodItem("food3", 3));
+        addAll(date);
+
 
     }
 
@@ -132,6 +159,8 @@ public class MainActivity extends AppCompatActivity {
             remainingCaloriesNumber+=foodItem.getCalories();
             currentCalories.setText("Current: " + currentCaloriesNumber);
             remainingCalories.setText("Remaining: " + remainingCaloriesNumber);
+            FoodDB db = new FoodDB(getApplicationContext());
+            db.deleteFood(foodItem);
 
         } else {
             Toast.makeText(getApplicationContext(), "this is: " + item.getTitle(), Toast.LENGTH_SHORT).show();
@@ -165,34 +194,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
-
-        if (requestCode == 69) {
-            if(resultCode == Activity.RESULT_OK){
-                Bundle data = intent.getExtras();
-                String name = data.getString("name");
-                int calories = data.getInt("calories");
-                int carbs = 0;
-                int fats = 0;
-                int proteins = 0;
-                if (data.containsKey("carbs")){
-                    carbs = data.getInt("carbs");
-                }
-                if (data.containsKey("fats")){
-                    fats = data.getInt("fats");
-                }
-                if (data.containsKey("proteins")){
-                    proteins = data.getInt("proteins");
-                }
-                addNew(new FoodItem(name, calories, carbs, fats, proteins));
-            }
-            if (resultCode == Activity.RESULT_CANCELED) {
-                //Write your code if there's no result
-            }
-        }
     }
 
 }

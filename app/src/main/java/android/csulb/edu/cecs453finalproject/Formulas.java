@@ -29,7 +29,7 @@ public class Formulas {
         return calories;
     }
 
-    public static double convertLbToKg(float weightInLb){
+    public static double convertLbToKg(double weightInLb){
         return weightInLb / 2.2046226218;
     }
 
