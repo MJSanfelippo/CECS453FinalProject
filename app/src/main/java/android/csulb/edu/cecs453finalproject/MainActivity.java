@@ -22,7 +22,6 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private int id;
     private LinearLayout foodList;
     TextView viewClicked;
 
@@ -44,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
         test.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
         test.setText(foodItem.getName());
         test.setTag(foodItem);
-        test.setId(id++);
         currentCaloriesNumber+=foodItem.getCalories();
         remainingCaloriesNumber-=foodItem.getCalories();
         currentCalories.setText("Current: " + currentCaloriesNumber);
@@ -84,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        id = 0;
         getSupportActionBar().setTitle("Health Buddy");
         foodList = (LinearLayout) findViewById(R.id.foodList);
 
@@ -109,9 +106,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, 69);
             }
         });
-        addNew(new FoodItem("food1", 33, id));
-        addNew(new FoodItem("food2", 5, id));
-        addNew(new FoodItem("food3", 3, id));
+        addNew(new FoodItem("food1", 33));
+        addNew(new FoodItem("food2", 5));
+        addNew(new FoodItem("food3", 3));
 
     }
 
@@ -190,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
                 if (data.containsKey("proteins")){
                     proteins = data.getInt("proteins");
                 }
-                addNew(new FoodItem(name, calories, carbs, fats, proteins, id));
+                addNew(new FoodItem(name, calories, carbs, fats, proteins));
             }
             if (resultCode == Activity.RESULT_CANCELED) {
                 //Write your code if there's no result

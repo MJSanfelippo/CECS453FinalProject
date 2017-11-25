@@ -6,22 +6,19 @@ package android.csulb.edu.cecs453finalproject;
 
 public class FoodItem {
 
-    private int id;
     private String name;
     private int calories;
     private int protein;
     private int carbs;
     private int fats;
 
-    public FoodItem(String name, int calories, int id){
+    public FoodItem(String name, int calories){
         this.name = name;
         this.calories = calories;
-        this.id = id;
         protein = carbs = fats = 0;
     }
 
-    public FoodItem(String name, int calories, int protein, int carbs, int fats, int id) {
-        this.id = id;
+    public FoodItem(String name, int calories, int protein, int carbs, int fats) {
         this.name = name;
         this.calories = calories;
         this.protein = protein;
