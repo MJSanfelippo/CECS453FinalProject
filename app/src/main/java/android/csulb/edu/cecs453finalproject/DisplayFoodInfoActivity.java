@@ -37,17 +37,18 @@ public class DisplayFoodInfoActivity extends AppCompatActivity {
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onBackPressed();
+                Intent i = new Intent(DisplayFoodInfoActivity.this, MainActivity.class);
+                startActivity(i);
             }
         });
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
 
         String realName = b.getString("name");
-        int realCalories = b.getInt("calories");
-        int realCarbs = b.getInt("carbs");
-        int realProteins = b.getInt("proteins");
-        int realFats = b.getInt("fats");
+        double realCalories = b.getDouble("calories");
+        double realCarbs = b.getDouble("carbs");
+        double realProteins = b.getDouble("proteins");
+        double realFats = b.getDouble("fats");
 
         name.setText(realName);
         calories.setText(realCalories+"");

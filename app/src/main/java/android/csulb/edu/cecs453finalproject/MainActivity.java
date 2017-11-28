@@ -16,7 +16,6 @@ import android.widget.LinearLayout;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.content.SharedPreferences.Editor;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -24,13 +23,13 @@ import java.util.Calendar;
 public class MainActivity extends AppCompatActivity {
 
     private LinearLayout foodList;
-    TextView viewClicked;
+    private TextView viewClicked;
 
-    FoodItem foodItem;
+    private FoodItem foodItem;
 
-    TextView goalCalories;
-    TextView currentCalories;
-    TextView remainingCalories;
+    private TextView goalCalories;
+    private TextView currentCalories;
+    private TextView remainingCalories;
 
     private int goalCaloriesNumber;
     private int currentCaloriesNumber;
@@ -38,8 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String date;
 
-
-    Button addFoodButton;
+    private Button addFoodButton;
 
     public void addNew(FoodItem foodItem){
         TextView test = new TextView(getApplicationContext());
