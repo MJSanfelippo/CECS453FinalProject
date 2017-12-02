@@ -1,5 +1,7 @@
 package android.csulb.edu.cecs453finalproject;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -12,13 +14,18 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView goalCalories;
     private TextView currentCalories;
     private TextView remainingCalories;
+    private TextView dateTextView;
 
     private int goalCaloriesNumber;
     private int currentCaloriesNumber;
@@ -38,6 +46,10 @@ public class MainActivity extends AppCompatActivity {
     private String date;
 
     private Button addFoodButton;
+    private Button pickDateButton;
+
+    private int year, month, day;
+
 
     public void addNew(FoodItem foodItem){
         TextView test = new TextView(getApplicationContext());
@@ -87,21 +99,82 @@ public class MainActivity extends AppCompatActivity {
             addNew(item);
         }
     }
+    public void setDate(View view){
+        showDialog(999);
+    }
+    @Override
+    protected Dialog onCreateDialog(int id){
+        if (id == 999) {
+            Calendar calendar = Calendar.getInstance();
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this, myDateListener, year, month, day);
+            return datePickerDialog;
+        }
+        return null;
+    }
+    private DatePickerDialog.OnDateSetListener myDateListener = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+            year = i;
+            month = i1+1;
+            String sMonth=""+month;
+            if (month<10){
+                sMonth = "0"+month;
+            }
+            String sDay = ""+day;
+            day = i2;
+            if (day<10){
+                sDay = "0"+day;
+            }
+            date = year+"-"+sMonth+"-"+sDay;
+            Toast.makeText(getApplicationContext(), date+"", Toast.LENGTH_LONG).show();
+            foodList.removeAllViews();
+            currentCaloriesNumber = 0;
+            remainingCaloriesNumber = goalCaloriesNumber;
+            currentCalories.setText("Current: " + currentCaloriesNumber);
+            remainingCalories.setText("Remaining: " + remainingCaloriesNumber);
+            String viewableDate;
+            String[] splitDate = date.split("-");
+            viewableDate = splitDate[1] + " - " + splitDate[2] + " - " + splitDate[0];
+            dateTextView.setText("date: " + viewableDate);
+
+            addAll(date);
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().setTitle("Health Buddy");
 
-        date = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
+        if (day==0 && month == 0 && year==0){
+            date = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
+            Toast.makeText(getApplicationContext(), date+"", Toast.LENGTH_SHORT).show();
+        } else {
+            date = year+"-"+month+"-"+day;
+        }
 
         foodList = (LinearLayout) findViewById(R.id.foodList);
 
         goalCalories = (TextView) findViewById(R.id.goalCalories);
         currentCalories = (TextView) findViewById(R.id.currentCalories);
         remainingCalories = (TextView) findViewById(R.id.remainingCalories);
+        dateTextView = (TextView) findViewById(R.id.dateTextView);
+        String viewableDate;
+        String[] splitDate = date.split("-");
+        viewableDate = splitDate[1] + " - " + splitDate[2] + " - " + splitDate[0];
+        dateTextView.setText("date: " + viewableDate);
 
         addFoodButton = (Button) findViewById(R.id.addFoodButton);
+        pickDateButton = (Button) findViewById(R.id.pickDateButton);
+        pickDateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setDate(view);
+            }
+        });
 
         SharedPreferences settings = getApplicationContext().getSharedPreferences("userSettings", 0);
         double currentWeight = settings.getFloat("currentWeight", 150);

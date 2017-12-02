@@ -96,7 +96,7 @@ public class EditFoodInfoActivity extends AppCompatActivity {
                     FoodItem item = foodItem;
                     item.setName(name);
                     item.setCalories((int) calories);
-                    item.setCarbs((int) carbs);
+                    item.setCarbs((int) carbs);//
                     item.setFats((int) fats);
                     item.setProtein((int) proteins);
                     FoodDB db = new FoodDB(getApplicationContext());
