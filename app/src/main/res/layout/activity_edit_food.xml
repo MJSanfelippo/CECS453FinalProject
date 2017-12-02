@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="android.csulb.edu.cecs453finalproject.EditFoodInfoActivity">
+
+    <TextView
+        android:id="@+id/nameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name: "
+        android:padding="20dp"
+        android:textSize="20sp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:padding="20dp"
+        android:id="@+id/nameEditText"
+        android:layout_toRightOf="@+id/nameTextView"
+        android:layout_above="@+id/caloriesTextView"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"/>
+
+    <TextView
+        android:id="@+id/caloriesTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nameTextView"
+        android:text="Calories: "
+        android:padding="20dp"
+        android:textSize="20sp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:id="@+id/caloriesEditText"
+        android:padding="20dp"
+        android:layout_toRightOf="@+id/caloriesTextView"
+        android:layout_below="@+id/nameTextView"
+        android:layout_alignBottom="@+id/caloriesTextView" />
+
+    <TextView
+        android:id="@+id/fatsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/caloriesTextView"
+        android:text="Fats: "
+        android:padding="20dp"
+        android:textSize="20sp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:id="@+id/fatsEditText"
+        android:padding="20dp"
+        android:layout_toRightOf="@+id/fatsTextView"
+        android:layout_below="@+id/caloriesEditText"
+        android:layout_above="@+id/carbsTextView" />
+
+    <TextView
+        android:id="@+id/carbsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fatsTextView"
+        android:text="Carbs: "
+        android:padding="20dp"
+        android:textSize="20sp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:id="@+id/carbsEditText"
+        android:padding="20dp"
+        android:layout_toRightOf="@+id/carbsTextView"
+        android:layout_below="@+id/fatsEditText"
+        android:layout_above="@+id/proteinsTextView" />
+    <TextView
+        android:id="@+id/proteinsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/carbsTextView"
+        android:text="Proteins: "
+        android:padding="20dp"
+        android:textSize="20sp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:id="@+id/proteinsEditText"
+        android:padding="20dp"
+        android:layout_toRightOf="@+id/proteinsTextView"
+        android:layout_below="@+id/carbsEditText"
+        android:layout_alignBottom="@+id/proteinsTextView" />
+
+    <Button
+        android:id="@+id/editButton"
+        android:layout_marginLeft="70dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="65dp"
+        android:text="Edit"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cancelButton"
+        android:layout_toRightOf="@+id/editButton"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="65dp"
+        android:layout_marginLeft="70dp"
+        android:text="Cancel" />
+
+
+</RelativeLayout>

@@ -167,7 +167,17 @@ public class MainActivity extends AppCompatActivity {
             db.deleteFood(foodItem);
 
         } else {
-            Toast.makeText(getApplicationContext(), "this is: " + item.getTitle(), Toast.LENGTH_SHORT).show();
+            /*
+             * Nam Nguyen
+             */
+            FoodItem foodItem = (FoodItem) viewClicked.getTag();
+
+            Bundle b = new Bundle();
+            b.putSerializable("FoodItem", foodItem);
+
+            Intent intent = new Intent(MainActivity.this, EditFoodInfoActivity.class);
+            intent.putExtras(b);
+            startActivity(intent);
         }
         return super.onContextItemSelected(item);
     }

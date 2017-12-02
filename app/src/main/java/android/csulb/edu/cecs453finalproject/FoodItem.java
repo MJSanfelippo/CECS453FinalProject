@@ -1,5 +1,6 @@
 package android.csulb.edu.cecs453finalproject;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -7,7 +8,7 @@ import java.util.Calendar;
  * Created by Michael on 11/11/2017.
  */
 
-public class FoodItem {
+public class FoodItem implements Serializable{
 
     private int id;
     private String name;
