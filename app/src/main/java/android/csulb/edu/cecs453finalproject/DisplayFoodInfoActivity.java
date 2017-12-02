@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by mjsan on 11/12/2017.
@@ -55,6 +56,11 @@ public class DisplayFoodInfoActivity extends AppCompatActivity {
         carbs.setText(realCarbs+"");
         proteins.setText(realProteins+"");
         fats.setText(realFats+"");
+
+        //Toast to let user know that their food item contains a lot of fat
+        if(realFats > 10){
+            Toast.makeText(DisplayFoodInfoActivity.this, "This food item contains a lot of fat!", Toast.LENGTH_SHORT).show();
+        }
 
     }
 }

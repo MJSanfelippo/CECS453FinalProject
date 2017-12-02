@@ -203,6 +203,7 @@ public class MainActivity extends AppCompatActivity {
         currentCalories.setText("Current: " + currentCaloriesNumber);
         remainingCalories.setText("Remaining: " + remainingCaloriesNumber);
 
+
         addFoodButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -213,6 +214,18 @@ public class MainActivity extends AppCompatActivity {
         });
         addAll(date);
 
+        //Toast messages/warning
+
+        //let user know if there are about to reach their calorie limit
+        if(remainingCaloriesNumber < 50 && remainingCaloriesNumber>1){
+            Toast.makeText(MainActivity.this, "Warning: You are about to exceed your calorie limit!", Toast.LENGTH_SHORT).show();
+        //let user know they went over their calorie limit for the day
+        }else if(remainingCaloriesNumber < 0){
+            Toast.makeText(MainActivity.this, "You exceeded your calorie limit for today!", Toast.LENGTH_SHORT).show();
+        //let user know they reached their calorie limit
+        }else if(remainingCaloriesNumber == 0){
+            Toast.makeText(MainActivity.this, "You have reached your calorie limit for today.", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
