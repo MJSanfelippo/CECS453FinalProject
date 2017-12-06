@@ -129,7 +129,6 @@ public class MainActivity extends AppCompatActivity {
                 sDay = "0"+day;
             }
             date = year+"-"+sMonth+"-"+sDay;
-            Toast.makeText(getApplicationContext(), date+"", Toast.LENGTH_LONG).show();
             foodList.removeAllViews();
             currentCaloriesNumber = 0;
             remainingCaloriesNumber = goalCaloriesNumber;
@@ -151,7 +150,6 @@ public class MainActivity extends AppCompatActivity {
 
         if (day==0 && month == 0 && year==0){
             date = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
-            Toast.makeText(getApplicationContext(), date+"", Toast.LENGTH_SHORT).show();
         } else {
             date = year+"-"+month+"-"+day;
         }

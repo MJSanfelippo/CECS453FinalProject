@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CECS453FinalProject.iml" filepath="$PROJECT_DIR$/CECS453FinalProject.iml" />
       <module fileurl="file://C:\Users\Doreen\AndroidStudioProjects\CECS453FinalProject\CECS453FinalProject.iml" filepath="C:\Users\Doreen\AndroidStudioProjects\CECS453FinalProject\CECS453FinalProject.iml" />
+      <module fileurl="file://C:\Users\mjsan\Desktop\School\Fall 2017\CECS 453\CECS453FinalProject1\CECS453FinalProject.iml" filepath="C:\Users\mjsan\Desktop\School\Fall 2017\CECS 453\CECS453FinalProject1\CECS453FinalProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CECS453FinalProject1.iml" filepath="$PROJECT_DIR$/CECS453FinalProject1.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\mjsan\Desktop\School\Fall 2017\CECS 453\CECS453FinalProject1\app\app.iml" filepath="C:\Users\mjsan\Desktop\School\Fall 2017\CECS 453\CECS453FinalProject1\app\app.iml" />
       <module fileurl="file://C:\Users\Doreen\AndroidStudioProjects\CECS453FinalProject\app\app.iml" filepath="C:\Users\Doreen\AndroidStudioProjects\CECS453FinalProject\app\app.iml" />
     </modules>
   </component>
